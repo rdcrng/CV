@@ -1,0 +1,124 @@
+% resume.tex
+%
+% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
+% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
+% (c) 2007-2010 Todd C. Miller <Todd.Miller@courtesan.com> http://www.courtesan.com/todd
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\documentclass[letterpaper,11pt]{article}
+
+%-----------------------------------------------------------
+\usepackage[empty]{fullpage}
+\usepackage{color}
+\definecolor{mygrey}{gray}{0.80}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Adjust margins to 0.5in on all sides
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{{\large \colorbox{mygrey}{\begin{minipage}{\textwidth}{\textbf{#1 \vphantom{p\^{E}}}}\end{minipage}}}}
+\newcommand{\ressubheading}[4]{
+\begin{tabular*}{7.0in}{l@{\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+\end{tabular*}\vspace{-6pt}}
+%-----------------------------------------------------------
+
+
+\begin{document}
+
+\begin{tabular*}{7.5in}{l@{\extracolsep{\fill}}r}
+\textbf{\large{Radu Creanga}}  & 814-218-7238 \\
+487 Jackson Park Drive &  rdcrng@gmail.com \\
+Meadville, PA 16335 & http://sites.google.com/site/rdcrng \\
+\end{tabular*}
+\\
+
+\vspace{0.1in}
+
+\resheading{Education}
+\begin{itemize}
+\item
+	\ressubheading{Allegheny College}{Meadville, PA}{Bachelor of Science in Computer Science}{Sep. 2007 - May. 2011}
+	\begin{itemize}
+		\resitem{Senior Comprehensive Project: Implicit Load Balancing for the Linux Scheduler}
+	\end{itemize}
+\end{itemize}
+
+\resheading{Work Experience}
+\begin{itemize}
+\item
+	\ressubheading{Department of Computer Science @ Allegheny College}{Meadville, PA}{Research Assistant}{May 2008 - Present}
+	\begin{itemize}
+	    \resitem{Under the supervision of Dr. Gregory Kapfhammer - extending my senior comprehensive project. Intending to demonstrate the viability of Implicit Load Blancing for the Linux scheduler to improve scheduler scalability across increasing number of CPUs (see http://github.com/rdcrng/LinSchedSim).}
+		\resitem{Under the supervision of Dr. Matthew Jadud - implemented Pulse Width Modulation functionality for the Plumbing library (see http://concurrency.cc/book/).}
+		\resitem{Under the supervision of Dr. Robert Cupper - redesigned and implemented XInteract - classroom software currently being used at Allegheny College that allows instructors to teach introductory programming courses using a more tailored and focused approach.}
+		\resitem{Under the supervision of Dr. Robert Roos - explored an ant colony optimization technique based on Lindenmayer systems.}
+	\end{itemize}
+	
+\item
+	\ressubheading{Learning Commons @ Allegheny College}{Meadville, PA}{Technology Consultant}{Jan. 2008 - May 2011, Academic Months}
+	\begin{itemize}
+		\resitem{Trained Allegheny students to use software in their academic pusuits, including document editing, basic website creation, movie and photo editing, and blogging software usage.}
+		\resitem{Held incoming student technology orientation workshops.}
+	\end{itemize}
+
+\item
+	\ressubheading{Department of Computer Science @ Allegheny College}{Meadville, PA}{Teaching Assistant}{Sep. 2009 - Dec. 2010}
+	\begin{itemize}
+		\resitem{Attended weekly recitation sessions during which my responsibility was to answer any questions related to the assignment of that week - generally they were Java programming exercises.}
+		\resitem{Held office hours during which my responsibility was to be available to all the students in the class for questions related to the course.}
+		\resitem{Periodically had to help the instructor of the course with grading laboratory assignments.}
+	\end{itemize}
+
+\item
+	\ressubheading{Learning Commons @ Allegheny College}{Meadville, PA}{Computer Science Tutor}{Sep. 2009 - May 2010}
+	\begin{itemize}
+		\resitem{Tutored students one-on-one for an introductory Computer Science course. Specifically, had to make sure the students correctly understood the course material and spent extra time to help them understand if needed. }
+		\resitem{Through alternative (non-code) examples help them complete lab assignments.}
+	\end{itemize}
+	
+\end{itemize}
+
+\pagebreak
+
+\resheading{Skills}
+
+\begin{description}
+\item[Spoken Languages:]
+Fluent in English, Romanian, and Russian.
+\item[Programming Languages:]
+C/C++, Fortran, C\#, Python, Java, BASH, SQL, Scheme, Occam-$\pi$.
+\item[Operating Systems:]
+Windows XP / 7, Linux (Fedora / Ubuntu)
+\item[Tools / Technologies:]
+Java Swing, JavaBeans, Object Relational Mapping (Cayenne, Hibernate, JPA, EclipseLink, TopLink), JDBC, Database Software (Apache Derby, Java DB, SQL Server, SQLite, MySQL), SimPy, Python NetWorkSpaces, Git, Subversion.
+\item[Miscellaneous:]
+Like to discover new technologies and exel at adapting existing tools to my development needs.
+\end{description}
+
+\resheading{Extracurricular Activities}
+\begin{itemize}
+\item
+	\ressubheading{Student Chapter of the Association for Computing Machinery}{Allegheny College}{President}{Sep. 2010 - May 2011}
+\item
+	\ressubheading{International Club}{Allegheny College}{President}{Sep. 2010 - May 2011}
+\item
+	\ressubheading{Student Chapter of the Association for Computing Machinery}{Allegheny College}{Vice-President}{Sep. 2009 - May 2010}
+\item
+	\ressubheading{International Club}{Allegheny College}{Vice-President}{Sep. 2009 - May 2010}
+\item
+	\ressubheading{International Club}{Allegheny College}{Treasurer}{Sep. 2008 - May 2009}
+\end{itemize}
+
+\end{document}
