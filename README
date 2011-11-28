@@ -1,0 +1,5 @@
+to produce the resume you'll need a Latex distribution and type:
+
+# pdflatex resume.tex
+
+on the command line
