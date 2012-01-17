@@ -1,0 +1,9 @@
+Radu Creanga's Curriculum Vitae
+===============================
+
+The document is written in LaTeX, see:
+    cv.tex
+
+To produce a PDF, run:
+    $ pdflatex cv.tex
+assuming you have LaTeX installed.
