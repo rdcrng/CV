@@ -1,118 +1,247 @@
-% resume.tex
+% cv.tex
 %
-% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
-% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
-% (c) 2007-2010 Todd C. Miller <Todd.Miller@courtesan.com> http://www.courtesan.com/todd
-%
-% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
-
-% Adapted from above to suit Radu Creanga's needs.
-
-\documentclass[letterpaper,12pt]{article}
-
-%-----------------------------------------------------------
-\usepackage[empty]{fullpage}
-\usepackage{color}
+% (c) 2013 Radu Creanga <rdcrng@gmail.com>
+\documentclass[a4paper,10pt]{article}
+%---------------------------------------------------------------------------------------------
+% Package Imports
+%---------------------------------------------------------------------------------------------
+\usepackage[empty, cm]{fullpage}
+\usepackage[utf8]{inputenc}
 \usepackage{url}
-\definecolor{mygrey}{gray}{0.80}
-\raggedbottom
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{enumitem}
 \raggedright
-\setlength{\tabcolsep}{0in}
+\raggedbottom
+\renewcommand*{\familydefault}{\sfdefault}
+%---------------------------------------------------------------------------------------------
+% Define lengths
+%---------------------------------------------------------------------------------------------
+\newlength{\zero}
+\setlength{\zero}{0em}
+\newlength{\one}
+\setlength{\one}{1em}
+\newlength{\two}
+\setlength{\two}{2em}
+\newlength{\eight}
+\setlength{\eight}{8em}
+\newlength{\ten}
+\setlength{\ten}{10em}
+\newlength{\leftcol}
+\setlength{\leftcol}{\ten}
+\newlength{\colsep}
+\setlength{\colsep}{\two}
+\newlength{\rightcol}
+\setlength{\rightcol}{\textwidth}
+\addtolength{\rightcol}{-\leftcol}
+\addtolength{\rightcol}{-\colsep}
+\setlength{\tabcolsep}{\zero}
+%---------------------------------------------------------------------------------------------
+% Table column type with fixed width, left justified
+% @name f
+% @param 1 width
+%---------------------------------------------------------------------------------------------
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{\zero}}p{#1}}
+%---------------------------------------------------------------------------------------------
+% CV container
+% @name cv
+% @param 1 name
+% @param 2 short personal
+% @param 3 degree
+% @param 4 address line 1
+% @param 5 address line 2
+% @param 6 contact 1
+% @param 7 contact 2
+% @param 8 photo file
+% @param 9 sections
+%---------------------------------------------------------------------------------------------
+\newcommand{\cv}[9]{
+	\begin{document}
+		\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+			\textbf{\large{#1}} & \textit{#2} \\ \hline
+		\end{tabular*} \\ \vspace{\one}
+		\begin{tabular*}{\textwidth}{l@{\extracolsep{\colsep}}l@{\extracolsep{\fill}}r}
+			\textbf{Degree:} & #3 & \multirow{1}{*}{\includegraphics[width=\eight]{#8}} \\
+			\textbf{Address:} & #4 & \\
+							  & #5 & \\
+			\textbf{Phone:} & #6 & \\
+			\textbf{Email:} & #7 & \\
+		\end{tabular*} \\ \vspace{\two} #9
+	\end{document}
+}
+%---------------------------------------------------------------------------------------------
+% CV section container with name and content
+% @name cvsection
+% @param 1 section name
+% @param 2 section content
+%---------------------------------------------------------------------------------------------
+\newcommand{\cvsection}[2]{
+    \begin{tabular*}{\textwidth}{L{\textwidth}}
+        \textbf{\large{#1}} \\ \hline
+    \end{tabular*} \\ \vspace{\one} #2
+}
+%---------------------------------------------------------------------------------------------
+% CV cronological container with dates, title, subtitle, and itemized details
+% @name cvcron
+% @param 1 dates
+% @param 2 title
+% @param 3 subtitle
+% @param 4 detail items
+%---------------------------------------------------------------------------------------------
+\newcommand{\cvcron}[4]{
+    \begin{tabular*}{\textwidth}{L{\leftcol}@{\extracolsep{\colsep}}L{\rightcol}}
+		#1 & \textbf{#2} \\
+		   & \textit{#3} \\
+		   & \vspace{-\one} \begin{itemize}[label={-},nosep,leftmargin=*]#4\end{itemize} 
+    \end{tabular*} \vspace{-\one}
+}
+%---------------------------------------------------------------------------------------------
+% CV descriptive container
+% @name cvdesc
+% @param 1 description items
+%---------------------------------------------------------------------------------------------
+\newcommand{\cvdesc}[1]{
+    \begin{description}
+    		[nosep, style=multiline,
+			labelwidth=\leftcol, labelsep=\colsep, leftmargin=!]#1
+	\end{description} \vspace{\one}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cv{Radu Creanga}{Born June 2, 1989 in Cimislia, Republic of Moldova}
+		{Bachelor of Science in Computer Science}
+		{106 Sunnyhill Drive}{Beaver Falls, PA 15010}
+		{+1 412 223 7238}{rdcrng@gmail.com}{cv-pic.jpg}{
 
-% Adjust margins to 0.5in on all sides
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.0in}
-\addtolength{\topmargin}{-0.5in}
-\addtolength{\textheight}{1.0in}
-
-%-----------------------------------------------------------
-%Custom commands
-\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
-\newcommand{\resheading}[1]{{\large \colorbox{mygrey}{\begin{minipage}{\textwidth}{\textbf{#1 \vphantom{p\^{E}}}}\end{minipage}}}}
-\newcommand{\ressubheading}[4]{
-\begin{tabular*}{7.0in}{l@{\extracolsep{\fill}}r}
-		\textbf{#1} & #2 \\
-		\textit{#3} & \textit{#4} \\
-\end{tabular*}\vspace{-6pt}}
-%-----------------------------------------------------------
 
 
-\begin{document}
+	\cvsection{Professional Experiance}{
 
-\begin{tabular*}{7.5in}{l@{\extracolsep{\fill}}r}
-\textbf{\large{Radu Creanga}}  & \\
-487 Jackson Park Drive & 412-223-7238 \\
-Meadville, PA 16335 & rdcrng@gmail.com \\
-\end{tabular*}
-\\
 
-\vspace{0.1in}
+		\cvcron{May 2012 - Present}{Software Engineer}
+				{Concensus Technologies, Cranberry Township, PA}{
 
-\resheading{Education}
-\begin{itemize}
-\item
-	\ressubheading{Allegheny College}{Meadville, PA}{Bachelor of Science in Computer Science}{May 2011}
-	\begin{itemize}
-		\resitem{Senior Thesis: Implicit Load Balancing for the Linux Scheduler}
-	\end{itemize}
-\end{itemize}
+			\item{Developing Identity Management Solutions}
 
-\resheading{Work Experience}
-\begin{itemize}
-\item
-	\ressubheading{Department of Computer Science, Allegheny College}{Meadville, PA}{Research Assistant}{May 2008 - Oct. 2011}
-	\begin{itemize}
-	    \resitem{Extending my senior thesis with the goal of demonstrating the viability of Implicit Load Balancing at improving the Linux scheduler's scalability across an increasing number of CPUs (\url{https://github.com/rdcrng/LinSchedSim}).}
-		\resitem{Implemented Pulse Width Modulation (PWM) functionality for the Plumbing library; i.e. wrote the low level interface that allows Occam-$\pi$ programs to seamlessly use the PWM functionality of the Atmel AVR series of microcontrollers (\url{http://concurrency.cc/about}).}
-		\resitem{Redesigned and implemented XInteract, software that allows instructors to assign partially completed programs in order to focus student efforts on parts pertinent to current material. It is currently being used at Allegheny College to teach introductory computer science (\url{https://github.com/allegheny/XInteract}).}
-		\resitem{Explored a grammatical evolution approach to the Santa Fe Ant Trail problem. Poster presented at the Allegheny Fall Research Symposium in October 2009 (\url{http://cs.allegheny.edu/~rroos/summer2009/}).}
-	\end{itemize}
-	
-\item
-	\ressubheading{Learning Commons, Allegheny College}{Meadville, PA}{Technology Consultant}{Jan. 2008 - May 2011}
-	\begin{itemize}
-		\resitem{Trained Allegheny students to use software in their academic pursuits, including document editing, basic website creation, movie and photo editing, and blogging software usage.}
-		\resitem{Held incoming student technology orientation workshops.}
-	\end{itemize}
+		}
 
-\item
-	\ressubheading{Department of Computer Science, Allegheny College}{Meadville, PA}{Teaching Assistant}{Sep. 2009 - Dec. 2010}
-	\begin{itemize}
-		\resitem{Attended weekly recitation sessions and answered questions related to the assignments.}
-		\resitem{Held office hours during which I was available to all the students in the class for questions related to the course.}
-		\resitem{Periodically helped the instructor of the course with grading laboratory assignments.}
-	\end{itemize}
 
-\item
-	\ressubheading{Learning Commons, Allegheny College}{Meadville, PA}{Computer Science Tutor}{Sep. 2009 - May 2010}
-	\begin{itemize}
-		\resitem{Assisted students in correctly understanding the course material.}
-		\resitem{Used alternative (non-code) examples to help them complete lab assignments.}
-	\end{itemize}
-	
-\end{itemize}
+		\cvcron{Sep. 2011 - May 2012}{Android Developer}
+				{Self Employed, Meadville, PA}{
+			\item{Developing Word Weaver - a dictionary application based on the WordNet database that uses automatic graph layout to visualize relationships between words and definitions.}
 
-\pagebreak
+		}
 
-\resheading{Skills}
 
-\begin{description}
-\item[Programming Languages:]
-Java, Python, C/C++, Fortran, R, BASH, SQL, Scheme, Occam-$\pi$.
-\item[Operating Systems:]
-Windows XP / 7, Linux (Fedora / Ubuntu)
-\item[Tools / Technologies:]
-Java Swing, JavaBeans, Object Relational Mapping (Cayenne, Hibernate, JPA, EclipseLink, TopLink), JDBC, Database Software (Apache Derby, Java DB, SQLite, MySQL), SimPy, Python NetWorkSpaces, Git, Subversion, \LaTeX{}.
-\item[Spoken Languages:]
-Fluent in English, Romanian, and Russian. Basic conversational skills in Turkish.
-\end{description}
+		\cvcron{May 2008 - Nov. 2011}{Research Assistant}
+				{Department of Computer Science, Allegheny College, Meadville, PA}{
 
-\resheading{Extracurricular Activities}
-\begin{itemize}
-\item
-	\ressubheading{Association for Computing Machinery, Allegheny College}{Meadville, PA}{Served as President, Vice-President}{Sep. 2009 - May 2011}
-\item
-	\ressubheading{International Club, Allegheny College}{Meadville, PA}{Served as President, Vice-President, Treasurer}{Sep. 2008 - May 2011}
-\end{itemize}
-\end{document}
+			\item{Extending my senior thesis with the goal of demonstrating the viability of Implicit Load Balancing at improving the Linux scheduler's scalability across an increasing number of CPUs (\url{https://github.com/rdcrng/LinSchedSim}).}
+
+			\item{Implemented Pulse Width Modulation (PWM) functionality for the Plumbing library; i.e. wrote the low level interface that allows Occam-$\pi$ programs to seamlessly use the PWM functionality of the Atmel AVR series of microcontrollers (\url{http://concurrency.cc/about}).}
+
+			\item{Redesigned and implemented XInteract, software that allows instructors to assign partially completed programs in order to focus student efforts on parts pertinent to current material. It is currently being used at Allegheny College to teach introductory computer science (\url{https://github.com/allegheny/XInteract}).}	
+
+			\item{Explored a grammatical evolution approach to the Santa Fe Ant Trail problem. Poster presented at the Allegheny Fall Research Symposium in October 2009 (\url{http://cs.allegheny.edu/~rroos/summer2009/}).}
+
+		}
+
+
+		\cvcron{Jan. 2008 - May 2011}{Technology Consultant}
+			{Learning Commons, Allegheny College, Meadville, PA}{
+
+			\item{Trained Allegheny students to use software in their academic pursuits, including document editing, basic website creation, movie and photo editing, and blogging software usage.}
+
+			\item{Held incoming student technology orientation workshops.}
+
+		}
+
+
+		\cvcron{Sep. 2009 - Dec. 2010}{Teaching Assistant}
+			{Department of Computer Science, Allegheny College, Meadville, PA}{
+
+			\item{Attended weekly recitation sessions and answered questions related to the assignments.}
+
+			\item{Held office hours during which I was available to all the students in the class for questions related to the course.}
+
+			\item{Periodically helped the instructor of the course with grading laboratory assignments.}
+
+		}
+
+
+		\cvcron{Sep. 2009 - May 2010}{Computer Science Tutor}
+			{Learning Commons, Allegheny College, Meadville, PA}{
+
+			\item{Assisted students in correctly understanding the course material.}
+
+			\item{Used alternative (non-code) examples to help them complete lab assignments.}
+
+		}
+
+
+	}
+
+
+
+
+	\cvsection{Education}{
+
+
+		\cvcron{May 2011}{Bachelor of Science in Computer Science}
+				{Allegheny College, Meadville, PA}{
+
+			\item{Senior Thesis: Implicit Load Balancing for the Linux Scheduler}
+
+		}
+
+
+	}
+
+
+
+
+	\cvsection{Skills}{
+
+
+		\cvdesc{
+
+			\item[Tools / Technologies]{JAVA EE, CDI, JSF, Primefaces, EJB, JNDI, LDAP, Glassfish 3+, JBoss, Arquillian, JUnit, Android Platform, Java Swing, JavaBeans, Object Relational Mapping (Hibernate, JPA, EclipseLink, TopLink), JDBC, Database Software (Apache Derby, Java DB, SQLite, MySQL), SimPy, Python NetWorkSpaces, Git, Subversion, \LaTeX{}.}
+
+			\item[Programming Languages]{Java, Python, C/C++, Fortran, R, BASH, SQL, Scheme, Occam-$\pi$.}
+
+			\item
+
+			\item[Operating Systems]{Windows XP / 7, Linux (Fedora / Ubuntu)}
+
+		}
+
+
+	}
+
+
+
+
+	\cvsection{Extracurricular Activities}{
+
+
+		\cvcron{Sep. 2009 - May 2011}{Association for Computing Machinery}
+				{Allegheny College, Meadville, PA}{
+
+			\item{Served as President and Vice-President}
+
+		}
+
+
+		\cvcron{Sep. 2008 - May 2011}{International Club}
+				{Allegheny College, Meadville, PA}{
+
+			\item{Served as President, Vice-President, and Treasurer}
+
+		}
+
+
+	}
+
+
+
+}
