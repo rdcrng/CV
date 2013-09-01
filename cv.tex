@@ -6,7 +6,7 @@
 % Package Imports
 %---------------------------------------------------------------------------------------------
 \usepackage[empty, cm]{fullpage}
-\usepackage[margin=2cm, top=2.6cm, bottom=1.4cm]{geometry}
+\usepackage[margin=2cm, top=2cm, bottom=1cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{url}
 \usepackage{array}
@@ -104,7 +104,7 @@
 %---------------------------------------------------------------------------------------------
 \newcommand{\cvdesc}[1]{
     \begin{description}
-    		[nosep, style=multiline,
+    		[nosep, itemsep=1em, style=multiline,
 			labelwidth=\leftcol, labelsep=\colsep, leftmargin=!]#1
 	\end{description} \vspace{\one}
 }
@@ -206,7 +206,7 @@
 		
 			\item[Omnifaces]{Implemented a feature which enables CDI injection into JSF converters and validators, fixing a major shortcomming of the JSF specification (\url{http://goo.gl/4ag3bM}).}
 			
-			\item[Omnifaces]{Back-ported the CDI @ViewScoped context to JSF 2.0 and 2.1 (\url{http://goo.gl/ZOqxmw}).}
+			\item[Omnifaces]{Backported CDI @ViewScoped context to JSF 2.0 and 2.1 (\url{http://goo.gl/ZOqxmw}).}
 			
 			\item[Omnifaces]{Implemented a simple JSF function that allows to easily express obtaining sublists in nested looping constructs (\url{http://goo.gl/PDMhdk}).}
 		
